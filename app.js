@@ -81,20 +81,22 @@ app.post('/user', async(req,res) => {
 
         const response = await axios.get('https://api.binance.com/api/v1/time');
         const serverTime = response.data.serverTime;
-
-        const newUser = new User({
+        console.log(serverTime);
+        
+        const newUser = await User.create({
             name,
             city,
             mobile,
             media_url,
             uid : serverTime
         });
-
-        await newUser.save();
+        
+        // await newUser.save();
+        console.log(newUser);
 
         res.status(200).json({code:200, msg: "User created successfully", user: newUser});
     } catch (error) {
-        res.status(500).json({code:300, msg: "Error occurred while creating user"});
+        res.status(500).json({code:300, msg: "Error occurred while creating user", error:error.message});
     }
 });
 
