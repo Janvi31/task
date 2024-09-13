@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit user data</h1>
+    <form action="/user-modify/<%= user.id %>" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="<%= user.name %>">
+
+        <label for="city">City:</label>
+        <input type="text" name="city" value="<%= user.city %>">
+
+        <label for="mobile">Mobile:</label>
+        <input type="text" name="mobile" value="<%= user.mobile %>">
+
+        <label for="media_url">Media URL:</label>
+        <input type="text" name="media_url" value="<%= user.media_url %>">
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
